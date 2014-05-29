@@ -54,6 +54,8 @@ proto_6in4_setup() {
 	proto_close_tunnel
 
 	proto_send_update "$cfg"
+    ip -6 route add default dev "$link"
+
 
 	[ -n "$tunnelid" -a -n "$username" -a -n "$password" ] && {
 		[ "${#password}" == 32 -a -z "${password//[a-fA-F0-9]/}" ] || {
